@@ -1,4 +1,5 @@
 require 'user_agent'
+require "support/shared_examples_for_friendly"
 
 shared_examples_for "Firefox browser" do
   it "should return 'Firefox' as its browser" do
@@ -41,6 +42,8 @@ describe 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:2.0b8) Gecko/20100101 
   end
 
   it { @useragent.should_not be_mobile }
+
+  it_should_behave_like "friend", "Mac"
 end
 
 describe 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.6; en-US; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13' do
@@ -71,6 +74,8 @@ describe 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.6; en-US; rv:1.9.2.13) Ge
   end
 
   it { @useragent.should_not be_mobile }
+
+  it_should_behave_like "friend", "Mac"
 end
 
 describe "UserAgent: 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.1) Gecko/2008070206 Firefox/3.0.1'" do
@@ -101,6 +106,8 @@ describe "UserAgent: 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.1) Gecko/
   end
 
   it { @useragent.should_not be_mobile }
+
+  it_should_behave_like "friend", "Linux"
 end
 
 describe "UserAgent: 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X; en-US; rv:1.8.1.14) Gecko/20080404 Firefox/2.0.0.14'" do
@@ -129,6 +136,8 @@ describe "UserAgent: 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X; en-US; rv:1.8.1
   it "should return 'en-US' as its localization" do
     @useragent.localization.should == "en-US"
   end
+
+  it_should_behave_like "friend", "Mac"
 end
 
 describe "UserAgent: 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.14) Gecko/20080404 Firefox/2.0.0.14'" do
@@ -157,6 +166,8 @@ describe "UserAgent: 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.1
   it "should return 'en-US' as its localization" do
     @useragent.localization.should == "en-US"
   end
+
+  it_should_behave_like "friend", "Windows"
 end
 
 describe "UserAgent: 'Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.8.0.12) Gecko/20070508 Firefox/1.5.0.12'" do
@@ -185,6 +196,8 @@ describe "UserAgent: 'Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:
   it "should return 'en-US' as its localization" do
     @useragent.localization.should == "en-US"
   end
+
+  it_should_behave_like "friend", "Mac"
 end
 
 describe "UserAgent: 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.0.12) Gecko/20070508 Firefox/1.5.0.12'" do
@@ -213,6 +226,8 @@ describe "UserAgent: 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.0.1
   it "should return 'en-US' as its localization" do
     @useragent.localization.should == "en-US"
   end
+
+  it_should_behave_like "friend", "Windows"
 end
 
 describe "UserAgent: 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.0.4) Gecko/20060612 Firefox/1.5.0.4 Flock/0.7.0.17.1'" do
@@ -241,6 +256,8 @@ describe "UserAgent: 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.0.4) Gecko/
   it "should return 'en-US' as its localization" do
     @useragent.localization.should == "en-US"
   end
+
+  it_should_behave_like "friend", "Linux"
 end
 
 describe "UserAgent: 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X; en; rv:1.8.1.14) Gecko/20080409 Camino/1.6 (like Firefox/2.0.0.14)'" do
@@ -271,6 +288,8 @@ describe "UserAgent: 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X; en; rv:1.8.1.14
   it "should return 'en' as its localization" do
     @useragent.localization.should == "en"
   end
+
+  it_should_behave_like "friend", "Mac"
 end
 
 describe 'UserAgent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1) Gecko/20061024 Iceweasel/2.0 (Debian-2.0+dfsg-1)' do
@@ -301,6 +320,8 @@ describe 'UserAgent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1) Gecko/200
   it "should return 'en-US' as its localization" do
     @useragent.localization.should == "en-US"
   end
+
+  it_should_behave_like "friend", "Linux"
 end
 
 describe 'UserAgent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.6; en-US; rv:1.9.1.4) Gecko/20091017 SeaMonkey/2.0' do
@@ -331,4 +352,6 @@ describe 'UserAgent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.6; en-US; rv:1
   it "should return 'en-US' as its localization" do
     @useragent.localization.should == "en-US"
   end
+
+  it_should_behave_like "friend", "Mac"
 end

@@ -1,4 +1,5 @@
 require 'user_agent'
+require "support/shared_examples_for_friendly"
 
 shared_examples_for "Safari browser" do
   it "should return 'Safari' as its browser" do
@@ -44,6 +45,8 @@ describe "UserAgent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_3; en-us) Ap
   end
 
   it { @useragent.should_not be_mobile }
+
+  it_should_behave_like "friend", "Mac"
 end
 
 describe "UserAgent: 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_5_3; en-us) AppleWebKit/526.9 (KHTML, like Gecko) Version/4.0dp1 Safari/526.8'" do
@@ -78,6 +81,8 @@ describe "UserAgent: 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_5_3; en-us) A
   end
 
   it { @useragent.should_not be_mobile }
+
+  it_should_behave_like "friend", "Mac"
 end
 
 describe "UserAgent: 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en) AppleWebKit/526.9 (KHTML, like Gecko) Version/4.0dp1 Safari/526.8'" do
@@ -112,6 +117,8 @@ describe "UserAgent: 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en) AppleWebKit/5
   end
 
   it { @useragent.should_not be_mobile }
+
+  it_should_behave_like "friend", "Windows"
 end
 
 describe "UserAgent: 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_5_3; en-us) AppleWebKit/525.18 (KHTML, like Gecko) Version/3.1.1 Safari/525.18'" do
@@ -184,6 +191,8 @@ describe "UserAgent: 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_5_3; en-us) A
   it "should not be <= 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X; en) AppleWebKit/419 (KHTML, like Gecko) Safari/419.3'" do
     @useragent.should_not <= UserAgent.parse("Mozilla/5.0 (Macintosh; U; Intel Mac OS X; en) AppleWebKit/419 (KHTML, like Gecko) Safari/419.3")
   end
+
+  it_should_behave_like "friend", "Mac"
 end
 
 describe "UserAgent: 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en) AppleWebKit/525.18 (KHTML, like Gecko) Version/3.1.1 Safari/525.18'" do
@@ -216,6 +225,8 @@ describe "UserAgent: 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en) AppleWebKit/5
   it "should return 'en' as its localization" do
     @useragent.localization.should == "en"
   end
+
+  it_should_behave_like "friend", "Windows"
 end
 
 describe "UserAgent: 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X; en) AppleWebKit/419 (KHTML, like Gecko) Safari/419.3'" do
@@ -248,6 +259,8 @@ describe "UserAgent: 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X; en) AppleWebKit
   it "should return 'en' as its localization" do
     @useragent.localization.should == "en"
   end
+
+  it_should_behave_like "friend", "Mac"
 end
 
 describe "UserAgent: 'Mozilla/5.0 (Macintosh; U; PPC Mac OS X; en-us) AppleWebKit/412.6 (KHTML, like Gecko) Safari/412.2'" do
@@ -280,6 +293,8 @@ describe "UserAgent: 'Mozilla/5.0 (Macintosh; U; PPC Mac OS X; en-us) AppleWebKi
   it "should return 'en' as its localization" do
     @useragent.localization.should == "en-us"
   end
+
+  it_should_behave_like "friend", "Mac"
 end
 
 describe "UserAgent: 'Mozilla/5.0 (Macintosh; U; PPC Mac OS X; en) AppleWebKit/412.6.2 (KHTML, like Gecko) Safari/412.2.2'" do
@@ -312,6 +327,8 @@ describe "UserAgent: 'Mozilla/5.0 (Macintosh; U; PPC Mac OS X; en) AppleWebKit/4
   it "should return 'en' as its localization" do
     @useragent.localization.should == "en"
   end
+
+  it_should_behave_like "friend", "Mac"
 end
 
 describe "UserAgent: 'Mozilla/5.0 (Macintosh; U; PPC Mac OS X; en) AppleWebKit/312.8 (KHTML, like Gecko) Safari/312.6'" do
@@ -344,6 +361,8 @@ describe "UserAgent: 'Mozilla/5.0 (Macintosh; U; PPC Mac OS X; en) AppleWebKit/3
   it "should return 'en' as its localization" do
     @useragent.localization.should == "en"
   end
+
+  it_should_behave_like "friend", "Mac"
 end
 
 describe "UserAgent: 'Mozilla/5.0 (Macintosh; U; PPC Mac OS X; fr-ch) AppleWebKit/312.1.1 (KHTML, like Gecko) Safari/312'" do
@@ -376,6 +395,8 @@ describe "UserAgent: 'Mozilla/5.0 (Macintosh; U; PPC Mac OS X; fr-ch) AppleWebKi
   it "should return 'en' as its localization" do
     @useragent.localization.should == "fr-ch"
   end
+
+  it_should_behave_like "friend", "Mac"
 end
 
 describe "UserAgent: 'Mozilla/5.0 (Macintosh; U; PPC Mac OS X; es-es) AppleWebKit/312.5.2 (KHTML, like Gecko) Safari/312.3.3'" do
@@ -408,6 +429,8 @@ describe "UserAgent: 'Mozilla/5.0 (Macintosh; U; PPC Mac OS X; es-es) AppleWebKi
   it "should return 'en' as its localization" do
     @useragent.localization.should == "es-es"
   end
+
+  it_should_behave_like "friend", "Mac"
 end
 
 describe "UserAgent: 'Mozilla/5.0 (Macintosh; U; PPC Mac OS X; fr) AppleWebKit/312.5.1 (KHTML, like Gecko) Safari/312.3.1'" do
@@ -440,6 +463,8 @@ describe "UserAgent: 'Mozilla/5.0 (Macintosh; U; PPC Mac OS X; fr) AppleWebKit/3
   it "should return 'en' as its localization" do
     @useragent.localization.should == "fr"
   end
+
+  it_should_behave_like "friend", "Mac"
 end
 
 describe "UserAgent: 'Mozilla/5.0 (Macintosh; U; PPC Mac OS X; en-us) AppleWebKit/312.5 (KHTML, like Gecko) Safari/312.3'" do
@@ -472,6 +497,8 @@ describe "UserAgent: 'Mozilla/5.0 (Macintosh; U; PPC Mac OS X; en-us) AppleWebKi
   it "should return 'en' as its localization" do
     @useragent.localization.should == "en-us"
   end
+
+  it_should_behave_like "friend", "Mac"
 end
 
 describe "UserAgent: 'Mozilla/5.0 (Macintosh; U; PPC Mac OS X; en-us) AppleWebKit/124 (KHTML, like Gecko) Safari/125'" do
@@ -504,6 +531,8 @@ describe "UserAgent: 'Mozilla/5.0 (Macintosh; U; PPC Mac OS X; en-us) AppleWebKi
   it "should return 'en' as its localization" do
     @useragent.localization.should == "en-us"
   end
+
+  it_should_behave_like "friend", "Mac"
 end
 
 describe "UserAgent: 'Mozilla/5.0 (Macintosh; U; PPC Mac OS X; en) AppleWebKit/125.5.7 (KHTML, like Gecko) Safari/125.12'" do
@@ -536,6 +565,8 @@ describe "UserAgent: 'Mozilla/5.0 (Macintosh; U; PPC Mac OS X; en) AppleWebKit/1
   it "should return 'en' as its localization" do
     @useragent.localization.should == "en"
   end
+
+  it_should_behave_like "friend", "Mac"
 end
 
 describe "UserAgent: 'Mozilla/5.0 (Macintosh; U; PPC Mac OS X; fr-fr) AppleWebKit/85.7 (KHTML, like Gecko) Safari/85.5'" do
@@ -568,6 +599,8 @@ describe "UserAgent: 'Mozilla/5.0 (Macintosh; U; PPC Mac OS X; fr-fr) AppleWebKi
   it "should return 'en' as its localization" do
     @useragent.localization.should == "fr-fr"
   end
+
+  it_should_behave_like "friend", "Mac"
 end
 
 describe "UserAgent: 'Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420.1 (KHTML, like Gecko) Version/3.0 Mobile/4A102 Safari/419'" do
@@ -602,6 +635,8 @@ describe "UserAgent: 'Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit
   end
 
   it { @useragent.should be_mobile }
+
+  it_should_behave_like "friend", "iPhone"
 end
 
 describe "UserAgent: 'Mozilla/5.0 (iPod; U; CPU like Mac OS X; en) AppleWebKit/420.1 (KHTML, like Gecko) Version/3.0 Mobile/4A102 Safari/419'" do
@@ -636,6 +671,8 @@ describe "UserAgent: 'Mozilla/5.0 (iPod; U; CPU like Mac OS X; en) AppleWebKit/4
   end
 
   it { @useragent.should be_mobile }
+
+  it_should_behave_like "friend", "iPod"
 end
 
 describe "UserAgent: Mozilla/5.0 (iPad; U; CPU OS 3_2 like Mac OS X; en-us) AppleWebKit/531.21.10 (KHTML, like Gecko) Version/4.0.4 Mobile/7B367 Safari/531.21.10" do
@@ -670,6 +707,8 @@ describe "UserAgent: Mozilla/5.0 (iPad; U; CPU OS 3_2 like Mac OS X; en-us) Appl
   end
 
   it { @useragent.should be_mobile }
+
+  it_should_behave_like "friend", "iPad"
 end
 
 describe "UserAgent: 'Mozilla/5.0 (iPhone; U; CPU iPhone OS 3_1_3 like Mac OS X; en-us) AppleWebKit/528.18 (KHTML, like Gecko) Version/4.0 Mobile/7E18 Safari/528.16'" do
@@ -702,6 +741,8 @@ describe "UserAgent: 'Mozilla/5.0 (iPhone; U; CPU iPhone OS 3_1_3 like Mac OS X;
   it "should return 'en-us' as its localization" do
     @useragent.localization.should == "en-us"
   end
+
+  it_should_behave_like "friend", "iPhone"
 end
 
 describe "UserAgent: 'Mozilla/5.0 (iPod; U; CPU iPhone OS 3_1_3 like Mac OS X; en-us) AppleWebKit/528.18 (KHTML, like Gecko) Version/4.0 Mobile/7E18 Safari/528.16'" do
@@ -736,6 +777,8 @@ describe "UserAgent: 'Mozilla/5.0 (iPod; U; CPU iPhone OS 3_1_3 like Mac OS X; e
   end
 
   it { @useragent.should be_mobile }
+
+  it_should_behave_like "friend", "iPod"
 end
 
 describe "UserAgent: 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_5; en-us) AppleWebKit/533.19.4 (KHTML, like Gecko) Version/5.0.3 Safari/533.19.4'" do
@@ -770,6 +813,8 @@ describe "UserAgent: 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_5; en-us) A
   end
 
   it { @useragent.should_not be_mobile }
+
+  it_should_behave_like "friend", "Mac"
 end
 
 describe "UserAgent: 'Mozilla/5.0 (iPhone; U; CPU iPhone OS 4_1 like Mac OS X; en-us) AppleWebKit/532.9 (KHTML, like Gecko) Version/4.0.5 Mobile/8B117 Safari/6531.22.7'" do
@@ -804,6 +849,8 @@ describe "UserAgent: 'Mozilla/5.0 (iPhone; U; CPU iPhone OS 4_1 like Mac OS X; e
   end
 
   it { @useragent.should be_mobile }
+
+  it_should_behave_like "friend", "iPhone"
 end
 
 describe "UserAgent: 'Mozilla/5.0 (iPhone; U; CPU iPhone OS 4_0_1 like Mac OS X; en-us) AppleWebKit/532.9 (KHTML, like Gecko) Mobile/8A306'" do
@@ -838,6 +885,8 @@ describe "UserAgent: 'Mozilla/5.0 (iPhone; U; CPU iPhone OS 4_0_1 like Mac OS X;
   end
 
   it { @useragent.should be_mobile }
+
+  it_should_behave_like "friend", "iPhone"
 end
 
 describe "UserAgent: 'Mozilla/5.0 (iPhone Simulator; U; CPU iPhone OS 4_0_1 like Mac OS X; en-us) AppleWebKit/532.9 (KHTML, like Gecko) Version/4.0.5 Mobile/8A306 Safari/6531.22.7'" do
@@ -872,6 +921,8 @@ describe "UserAgent: 'Mozilla/5.0 (iPhone Simulator; U; CPU iPhone OS 4_0_1 like
   end
 
   it { @useragent.should be_mobile }
+
+  it_should_behave_like "friend", "iPhone Simulator"
 end
 
 describe "UserAgent: 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.168 Safari/535.19'" do
@@ -906,6 +957,9 @@ describe "UserAgent: 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.19 (KH
   it "should return nil as its localization" do
     @useragent.localization.should be_nil
   end
+
+  it_should_behave_like "friend", "Windows"
+
 end
 
 describe "UserAgent: 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US) AppleWebKit/525.13 (KHTML, like Gecko) Chrome/0.0.2 Safari/525.13'" do
@@ -940,6 +994,8 @@ describe "UserAgent: 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US) AppleWebKi
   it "should return 'en-US' as its localization" do
     @useragent.localization.should == "en-US"
   end
+
+  it_should_behave_like "friend", "Windows"
 end
 
 describe "UserAgent: 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/533.2 (KHTML, like Gecko) Chrome/6.0'" do
@@ -974,6 +1030,8 @@ describe "UserAgent: 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKi
   it "should return 'en-US' as its localization" do
     @useragent.localization.should == "en-US"
   end
+
+  it_should_behave_like "friend", "Windows"
 end
 
 describe "UserAgent: 'Mozilla/5.0 AppleWebKit/534.10 Chrome/8.0.552.215 Safari/534.10'" do
@@ -1008,6 +1066,8 @@ describe "UserAgent: 'Mozilla/5.0 AppleWebKit/534.10 Chrome/8.0.552.215 Safari/5
   it "should return nil as its localization" do
     @useragent.localization.should be_nil
   end
+
+  it_should_behave_like "friend", nil
 end
 
 describe "UserAgent: 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_5; en-US) AppleWebKit/534.10 (KHTML, like Gecko) Chrome/8.0.552.231 Safari/534.10'" do
@@ -1042,6 +1102,8 @@ describe "UserAgent: 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_5; en-US) A
   it "should return 'en-US' as its localization" do
     @useragent.localization.should == "en-US"
   end
+
+  it_should_behave_like "friend", "Mac"
 end
 
 describe "UserAgent: 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_5; en-US) AppleWebKit/534.16 (KHTML, like Gecko) Chrome/10.0.639.0 Safari/534.16'" do
@@ -1086,6 +1148,8 @@ describe "UserAgent: 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_5; en-US) A
     other = UserAgent.parse("Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_5; en-US) AppleWebKit/534.10 (KHTML, like Gecko) Chrome/8.0.552.231 Safari/534.10")
     @useragent.should_not < other
   end
+
+  it_should_behave_like "friend", "Mac"
 end
 
 describe "UserAgent: 'Mozilla/5.0 (webOS/1.4.0; U; en-US) AppleWebKit/532.2 (KHTML, like Gecko) Version/1.0 Safari/532.2 Pre/1.1'" do
@@ -1118,6 +1182,8 @@ describe "UserAgent: 'Mozilla/5.0 (webOS/1.4.0; U; en-US) AppleWebKit/532.2 (KHT
   end
 
   it { @useragent.should be_mobile }
+
+  it_should_behave_like "friend", "Palm Pre"
 end
 
 describe "UserAgent: 'Mozilla/5.0 (webOS/1.4.0; U; en-US) AppleWebKit/532.2 (KHTML, like Gecko) Version/1.0 Safari/532.2 Pixi/1.1'" do
@@ -1150,6 +1216,8 @@ describe "UserAgent: 'Mozilla/5.0 (webOS/1.4.0; U; en-US) AppleWebKit/532.2 (KHT
   end
 
   it { @useragent.should be_mobile }
+
+  it_should_behave_like "friend", "Palm Pixi"
 end
 
 describe "UserAgent: 'Mozilla/5.0 (Linux; U; Android 1.5; de-; HTC Magic Build/PLAT-RC33) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1'" do
@@ -1182,6 +1250,8 @@ describe "UserAgent: 'Mozilla/5.0 (Linux; U; Android 1.5; de-; HTC Magic Build/P
   end
 
   it { @useragent.should be_mobile }
+
+  it_should_behave_like "friend", "HTC Magic"
 end
 
 describe "UserAgent: 'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-us; Nexus One Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17 Chrome/4.1.249.1025'" do
@@ -1214,6 +1284,8 @@ describe "UserAgent: 'Mozilla/5.0 (Linux; U; Android 2.1-update1; en-us; Nexus O
   end
 
   it { @useragent.should be_mobile }
+
+  it_should_behave_like "friend", "Nexus One"
 end
 
 describe "UserAgent: 'Mozilla/5.0 (BlackBerry; U; BlackBerry 9800; en) AppleWebKit/534.1+ (KHTML, Like Gecko) Version/6.0.0.141 Mobile Safari/534.1+'" do
@@ -1246,6 +1318,8 @@ describe "UserAgent: 'Mozilla/5.0 (BlackBerry; U; BlackBerry 9800; en) AppleWebK
   end
 
   it { @useragent.should be_mobile }
+
+  it_should_behave_like "friend", "BlackBerry"
 end
 
 describe "UserAgent: SonyEricssonU8i/R2EA; Mozilla/5.0 (SymbianOS/9.4; U; Series60/5.0 Profile/MIDP-2.1 Configuration/CLDC-1.1) AppleWebKit/525 (KHTML, like Gecko) Version/3.0 Safari/525" do
@@ -1273,6 +1347,8 @@ describe "UserAgent: SonyEricssonU8i/R2EA; Mozilla/5.0 (SymbianOS/9.4; U; Series
   end
 
   it { @useragent.should be_mobile }
+
+  it_should_behave_like "friend", "SonyEricssonU8i"
 end
 
 describe "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_2) AppleWebKit/534.51.22 (KHTML, like Gecko) Version/5.1.1 Safari/534.51.22" do
@@ -1315,6 +1391,8 @@ describe "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_2) AppleWebKit/534.51.22 (
   end
 
   it { @useragent.should_not be_mobile }
+
+  it_should_behave_like "friend", "Mac"
 end
 
 describe "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_2) AppleWebKit/534.52.7 (KHTML, like Gecko)" do
@@ -1329,4 +1407,6 @@ describe "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_2) AppleWebKit/534.52.7 (K
   it "should return '5.1.2' as its version" do
     @useragent.version.should == "5.1.2"
   end
+
+  it_should_behave_like "friend", "Mac"
 end
