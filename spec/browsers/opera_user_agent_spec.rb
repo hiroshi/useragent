@@ -1,4 +1,5 @@
 require 'user_agent'
+require "support/shared_examples_for_friendly"
 
 shared_examples_for "Opera browser" do
   it "should return 'Opera' as its browser" do
@@ -32,6 +33,8 @@ describe "UserAgent: 'Opera/9.27 (Macintosh; Intel Mac OS X; U; en)'" do
   it "should return 'en' as its localization" do
     @useragent.localization.should == "en"
   end
+
+  it_should_behave_like "friend", "Mac"
 end
 
 describe "UserAgent: 'Opera/9.27 (Windows NT 5.1; U; en)'" do
@@ -56,6 +59,8 @@ describe "UserAgent: 'Opera/9.27 (Windows NT 5.1; U; en)'" do
   it "should return 'en' as its localization" do
     @useragent.localization.should == "en"
   end
+
+  it_should_behave_like "friend", "Windows"
 end
 
 describe "UserAgent: 'Opera/9.80'" do
@@ -80,6 +85,8 @@ describe "UserAgent: 'Opera/9.80'" do
   it "should return nil as its localization" do
     @useragent.localization.should be_nil
   end
+
+  it_should_behave_like "friend", nil
 end
 
 describe "UserAgent: 'Opera/9.80 (Macintosh; Intel Mac OS X; U; en) Presto/2.2.15 Version/10.10'" do
@@ -104,6 +111,8 @@ describe "UserAgent: 'Opera/9.80 (Macintosh; Intel Mac OS X; U; en) Presto/2.2.1
   it "should return 'en' as its localization" do
     @useragent.localization.should == "en"
   end
+
+  it_should_behave_like "friend", "Mac"
 end
 
 describe "UserAgent: 'Opera/9.80 (Windows NT 6.0; U; en) Presto/2.2.15 Version/10.10'" do
@@ -128,4 +137,6 @@ describe "UserAgent: 'Opera/9.80 (Windows NT 6.0; U; en) Presto/2.2.15 Version/1
   it "should return 'en' as its localization" do
     @useragent.localization.should == "en"
   end
+
+  it_should_behave_like "friend", "Windows"
 end

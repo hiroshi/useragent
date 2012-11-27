@@ -2,6 +2,7 @@ require 'user_agent/comparable'
 require 'user_agent/browsers'
 require 'user_agent/operating_systems'
 require 'user_agent/version'
+require 'user_agent/friendly'
 
 class UserAgent
   # http://www.texsoft.it/index.php?m=sw.php.useragent
@@ -24,6 +25,7 @@ class UserAgent
       string = string[m[0].length..-1].strip
     end
     Browsers.extend(agents)
+    agents.extend(Friendly)
     agents
   end
 

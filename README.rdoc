@@ -21,6 +21,11 @@ UserAgent is a Ruby library that parses and compares HTTP User Agents.
   user_agent.mobile?
   # => false
 
+==== User Friendly names
+
+  user_agent.friendly.device
+  # => can return 'Mac', 'Windows', 'iPad' or 'Nexus One'
+
 ==== Comparison
 
   Browser = Struct.new(:browser, :version)

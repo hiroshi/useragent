@@ -1,4 +1,5 @@
 require 'user_agent'
+require "support/shared_examples_for_friendly"
 
 shared_examples_for "Internet Explorer browser" do
   it "should return 'Internet Explorer' as its browser" do
@@ -16,6 +17,8 @@ shared_examples_for "Internet Explorer browser" do
   it "should be compatible" do
     @useragent.should be_compatible
   end
+
+  it_should_behave_like "friend", "Windows"
 end
 
 describe "UserAgent: 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)'" do

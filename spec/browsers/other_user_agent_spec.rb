@@ -1,4 +1,5 @@
 require 'user_agent'
+require "support/shared_examples_for_friendly"
 
 describe "UserAgent: nil" do
   before do
@@ -23,6 +24,8 @@ describe "UserAgent: nil" do
 
   it { @useragent.should_not be_mobile }
   it { @useragent.should_not be_bot }
+
+  it_should_behave_like "friend", nil
 end
 
 describe "UserAgent: ''" do
@@ -48,6 +51,8 @@ describe "UserAgent: ''" do
 
   it { @useragent.should_not be_mobile }
   it { @useragent.should_not be_bot }
+
+  it_should_behave_like "friend", nil
 end
 
 describe "UserAgent: 'Mozilla/4.0 (compatible)'" do
@@ -73,6 +78,8 @@ describe "UserAgent: 'Mozilla/4.0 (compatible)'" do
 
   it { @useragent.should_not be_mobile }
   it { @useragent.should_not be_bot }
+
+  it_should_behave_like "friend", nil
 end
 
 describe "UserAgent: 'Mozilla/5.0'" do
@@ -98,6 +105,8 @@ describe "UserAgent: 'Mozilla/5.0'" do
 
   it { @useragent.should_not be_mobile }
   it { @useragent.should_not be_bot }
+
+  it_should_behave_like "friend", nil
 end
 
 describe "UserAgent: 'amaya/9.51 libwww/5.4.0'" do
@@ -116,6 +125,8 @@ describe "UserAgent: 'amaya/9.51 libwww/5.4.0'" do
   it "should return '5.4.0' as its libwww version" do
     @useragent.libwww.version.should == "5.4.0"
   end
+
+  it_should_behave_like "friend", nil
 end
 
 describe "UserAgent: 'Rails Testing'" do
@@ -131,6 +142,8 @@ describe "UserAgent: 'Rails Testing'" do
   it { @useragent.platform.should be_nil }
   it { @useragent.os.should be_nil }
   it { @useragent.should_not be_mobile }
+
+  it_should_behave_like "friend", nil
 end
 
 describe "UserAgent: 'Python-urllib/2.7'" do
@@ -149,6 +162,8 @@ describe "UserAgent: 'Python-urllib/2.7'" do
   it { @useragent.platform.should be_nil }
   it { @useragent.os.should be_nil }
   it { @useragent.should_not be_mobile }
+
+  it_should_behave_like "friend", nil
 end
 
 describe "UserAgent: 'check_http/v1.4.15 (nagios-plugins 1.4.15)'" do
@@ -167,4 +182,6 @@ describe "UserAgent: 'check_http/v1.4.15 (nagios-plugins 1.4.15)'" do
   it { @useragent.platform.should be_nil }
   it { @useragent.os.should be_nil }
   it { @useragent.should_not be_mobile }
+
+  it_should_behave_like "friend", nil
 end
